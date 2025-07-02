@@ -1,7 +1,9 @@
+import LogIn from "./components/Auth/LogIn"
+
 function App() {
   return (
     <>
-    <h1 className="text-fuchsia-900 text-2xl text-center">App</h1>
+    <LogIn />
     </>
   )
 }
