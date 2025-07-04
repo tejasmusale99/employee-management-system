@@ -21,18 +21,52 @@ const LogIn = () => {
     }
  
   return (
-    <div className="flex items-center justify-center h-screen w-screen ">
-      <div className="border-2 border-emerald-600 p-20 rounded-3xl">
-        <form className="flex flex-col gap-5 items-center justify-center" onSubmit={
-            (e)=>{
-                submitHandler(e)
-        }}>
-          <input className="border-2 border-emerald-600 rounded-full py-2 px-4 " type="email" placeholder="Enter your email" value={email} onChange={(e)=>{chnageEmailHandler(e)}}/>
-          <input className="border-2 border-emerald-600 rounded-full py-2 px-4 " type="password" placeholder="Enter your password" value={password} onChange={(e)=>{chnagePasswordHandler(e)}}/>
-          <button className=" bg-emerald-600 rounded-full py-1 px-10 cursor-pointer hover:bg-emerald-500 hover:text-black" type="submit">Log In</button>
-        </form>
-      </div>
-    </div>
+<div className="flex items-center justify-center min-h-screen  px-4">
+  <div className="w-full max-w-md bg-white border border-emerald-300 shadow-xl rounded-2xl p-8 sm:p-10">
+    <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">Log In</h2>
+
+    <form
+      className="flex flex-col gap-6"
+      onSubmit={(e) => {
+        submitHandler(e);
+      }}
+    >
+      <input
+        className="border border-emerald-400 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-gray-800 placeholder-gray-600 transition-all duration-200"
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => chnageEmailHandler(e)}
+        required
+      />
+
+      <input
+        className="border border-emerald-400 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-gray-800 placeholder-gray-600 transition-all duration-200"
+        type="password"
+        placeholder="Enter your password"
+        value={password}
+        onChange={(e) => chnagePasswordHandler(e)}
+        required
+      />
+
+      <button
+        type="submit"
+        className="bg-emerald-600 text-white font-semibold rounded-xl py-3 hover:bg-emerald-500 shadow-md transition duration-300"
+      >
+        Log In
+      </button>
+    </form>
+
+    <p className="text-center text-sm text-gray-700 mt-5">
+      Don't have an account?{" "}
+      <span className="text-emerald-700 font-semibold cursor-pointer hover:underline">
+        Sign Up
+      </span>
+    </p>
+  </div>
+</div>
+
+
   );
 };
 
