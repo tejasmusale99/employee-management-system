@@ -5,9 +5,9 @@ import App from "./App.jsx";
 import { AuthContxt } from "./context/AuthContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+
     <AuthContxt>
       <App />
     </AuthContxt>
-  </StrictMode>
+
 );
