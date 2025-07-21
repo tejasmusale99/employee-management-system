@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LogIn from "./components/Auth/LogIn";
 import { AdminDashboard } from "./components/Dashboard/AdminDashboard";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import { getLocalStorage, setLocalStorage } from "./utils/localStorage";
+import  { AuthContext } from "./context/AuthProvider";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,6 +24,9 @@ function App() {
     setLocalStorage();
     getLocalStorage();
   });
+
+  const data = useContext(AuthContext)
+  console.log(data)
 
   return (
     <>

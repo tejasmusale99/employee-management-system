@@ -2,12 +2,12 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { AuthContxt } from "./context/AuthContext.jsx";
+import AuthProvider from "./context/AuthProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
 
-    <AuthContxt>
+    <AuthProvider>
       <App />
-    </AuthContxt>
+    </AuthProvider>
 
 );
