@@ -8,12 +8,15 @@ import  { AuthContext } from "./context/AuthProvider";
 function App() {
   const [user, setUser] = useState(null);
 
+  const AuthData = useContext(AuthContext)
+  console.log(AuthData)
+
   function handleLogIn(email, password) {
     if (email == "admin@gmail.com" && password == "123") {
-      console.log("this is admin");
+      // console.log("this is admin");
       setUser('admin')
     } else if (email == "user@gmail.com" && password == "123") {
-      console.log("this is admin");
+      // console.log("this is admin");
       setUser('employee')
     } else {
       alert("invalid credentials");
@@ -25,8 +28,7 @@ function App() {
     getLocalStorage();
   });
 
-  const data = useContext(AuthContext)
-  console.log(data)
+
 
   return (
     <>
