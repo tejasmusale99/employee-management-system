@@ -9,16 +9,25 @@ function App() {
   const [user, setUser] = useState(null);
   const authData = useContext(AuthContext);
 
-  console.log("AuthData in App:", authData);
+  useEffect(()=>{
+    if(authData){ 
+      const loggedInUser = localStorage.getItem('loggedInUser')
+      if(loggedInUser){
+        setUser(loggedInUser.role)
+      }
+    }
+  }, [authData]);
 
   function handleLogIn(email, password) {
     if (email === "admin@gmail.com" && password === "123") {
+      localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
       setUser("admin");
     } else if (
       authData?.employees?.find(
         (e) => e.email === email && e.pass === password
       )
     ) {
+      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
       setUser("employee");
     } else {
       alert("invalid credentials");
