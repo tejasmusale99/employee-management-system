@@ -13,7 +13,9 @@ const [userData, setUserData ] = useState(null)
 
   return (
     <div>
-      <AuthContext.Provider value={userData}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={userData}>
+        {children}
+      </AuthContext.Provider>
     </div>
   );
 };

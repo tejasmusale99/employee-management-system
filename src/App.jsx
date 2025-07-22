@@ -3,38 +3,44 @@ import LogIn from "./components/Auth/LogIn";
 import { AdminDashboard } from "./components/Dashboard/AdminDashboard";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import { getLocalStorage, setLocalStorage } from "./utils/localStorage";
-import  { AuthContext } from "./context/AuthProvider";
+import { AuthContext } from "./context/AuthProvider";
 
 function App() {
   const [user, setUser] = useState(null);
+  const authData = useContext(AuthContext);
 
-  const AuthData = useContext(AuthContext)
-  console.log(AuthData)
+  console.log("AuthData in App:", authData);
 
   function handleLogIn(email, password) {
-    if (email == "admin@gmail.com" && password == "123") {
-      // console.log("this is admin");
-      setUser('admin')
-    } else if (email == "user@gmail.com" && password == "123") {
-      // console.log("this is admin");
-      setUser('employee')
+    if (email === "admin@gmail.com" && password === "123") {
+      setUser("admin");
+    } else if (
+      authData?.employees?.find(
+        (e) => e.email === email && e.pass === password
+      )
+    ) {
+      setUser("employee");
     } else {
       alert("invalid credentials");
     }
   }
 
+  // Run only once to set default data in localStorage
   useEffect(() => {
     setLocalStorage();
-    getLocalStorage();
-  });
+    getLocalStorage(); // (not really needed here)
+  }, []);
 
-
+  // Wait till authData is loaded
+  if (!authData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      {!user  && <LogIn handlelogin={handleLogIn} />}
-       {user === "admin" && <AdminDashboard />}
-        {user === "employee" && <EmployeeDashboard />}
+      {!user && <LogIn handlelogin={handleLogIn} />}
+      {user === "admin" && <AdminDashboard />}
+      {user === "employee" && <EmployeeDashboard />}
     </>
   );
 }
