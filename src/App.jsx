@@ -7,28 +7,29 @@ import { AuthContext } from "./context/AuthProvider";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [logInUserData, setLogInUserData] = useState(null)
   const authData = useContext(AuthContext);
 
-  useEffect(()=>{
-    if(authData){ 
-      const loggedInUser = localStorage.getItem('loggedInUser')
-      if(loggedInUser){
-        setUser(loggedInUser.role)
-      }
-    }
-  }, [authData]);
+  // useEffect(()=>{
+  //   if(authData){ 
+  //     const loggedInUser = localStorage.getItem('loggedInUser')
+  //     if(loggedInUser){
+  //       setUser(loggedInUser.role)
+  //     }
+  //   }
+  // }, [authData]);
 
   function handleLogIn(email, password) {
     if (email === "admin@gmail.com" && password === "123") {
+       setUser("admin");
       localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
-      setUser("admin");
-    } else if (
-      authData?.employees?.find(
-        (e) => e.email === email && e.pass === password
-      )
-    ) {
-      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
-      setUser("employee");
+    } else if (authData) {
+      const employee = authData.employees.find((e) => e.email === email && e.pass === password)
+      if(employee){
+         localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
+         setLogInUserData(employee)
+         setUser("employee");
+      }
     } else {
       alert("invalid credentials");
     }
@@ -49,7 +50,7 @@ function App() {
     <>
       {!user && <LogIn handlelogin={handleLogIn} />}
       {user === "admin" && <AdminDashboard />}
-      {user === "employee" && <EmployeeDashboard />}
+      {user === "employee" && <EmployeeDashboard data={logInUserData}/>}
     </>
   );
 }
