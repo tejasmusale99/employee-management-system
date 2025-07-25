@@ -3,12 +3,12 @@ const employees = [
     id: "E001",
     firstName: "Rahul",
     lastName: "Deshmukh",
-    email: "employee1@example.com",
+    email: "e@e.com",
     pass: "123",
     taskCount: {
       active: 1,
-      newTask: 1,
-      completed: 1,
+      newTask: 3,
+      completed: 0,
       failed: 1
     },
     tasks: [

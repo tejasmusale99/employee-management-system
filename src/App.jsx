@@ -10,14 +10,14 @@ function App() {
   const [logInUserData, setLogInUserData] = useState(null)
   const authData = useContext(AuthContext);
 
-  // useEffect(()=>{
-  //   if(authData){ 
-  //     const loggedInUser = localStorage.getItem('loggedInUser')
-  //     if(loggedInUser){
-  //       setUser(loggedInUser.role)
-  //     }
-  //   }
-  // }, [authData]);
+  useEffect(()=>{
+    if(authData){ 
+      const loggedInUser = localStorage.getItem('loggedInUser')
+      if(loggedInUser){
+        setUser(loggedInUser.role)
+      }
+    }
+  }, [authData]);
 
   function handleLogIn(email, password) {
     if (email === "admin@gmail.com" && password === "123") {

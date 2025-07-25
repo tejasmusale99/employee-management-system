@@ -1,4 +1,5 @@
-export const TaskList = () => {
+export const TaskList = ({data}) => {
+  console.log(data.tasks)
   return (
     <div className="overflow-x-auto p-4 no-scrollbar">
       <div className="flex h-auto gap-5 items-start flex-wrap sm:flex-nowrap">
