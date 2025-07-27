@@ -1,7 +1,7 @@
-export const NewTask = () => {
+export const FailedTask = () => {
   return (
     <div>
-      <div className="h-full w-full max-w-sm min-h-[310px] bg-green-400 text-white p-4 rounded-xl flex-shrink-0">
+      <div className="h-full w-full max-w-sm min-h-[310px] bg-violet-400 text-white p-4 rounded-xl flex-shrink-0">
         <div className="flex justify-between items-center">
           <h4 className="bg-red-600 font-bold px-4 py-1 rounded text-sm">
             High
@@ -17,7 +17,7 @@ export const NewTask = () => {
         </p>
         <div className="mt-4 flex gap-2">
           <button className="bg-amber-100 hover:bg-amber-700 hover:text-white text-sm text-black px-4 py-2 rounded">
-            Accept Task
+            Failed
           </button>
         </div>
       </div>
