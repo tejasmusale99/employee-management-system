@@ -9,7 +9,7 @@ const employees = [
       active: 1,
       newTask: 3,
       completed: 0,
-      failed: 1
+      failed: 1,
     },
     tasks: [
       {
@@ -54,7 +54,7 @@ const employees = [
       active: 2,
       newTask: 1,
       completed: 1,
-      failed: 1
+      failed: 1,
     },
     tasks: [
       {
@@ -109,7 +109,7 @@ const employees = [
       active: 3,
       newTask: 2,
       completed: 1,
-      failed: 1
+      failed: 1,
     },
     tasks: [
       {
@@ -174,7 +174,7 @@ const employees = [
       active: 1,
       newTask: 0,
       completed: 1,
-      failed: 1
+      failed: 1,
     },
     tasks: [
       {
@@ -219,7 +219,7 @@ const employees = [
       active: 2,
       newTask: 1,
       completed: 1,
-      failed: 1
+      failed: 1,
     },
     tasks: [
       {
@@ -266,11 +266,10 @@ const employees = [
   },
 ];
 
-
 const admin = [
   {
     id: "A001",
-    email: "admin@example.com",
+    email: "admin@gmail.com",
     pass: "123",
   },
 ];
@@ -285,5 +284,5 @@ export const getLocalStorage = () => {
   const admin = JSON.parse(localStorage.getItem("admin"));
 
   // console.log(employees, admin);
-  return {employees, admin}
+  return { employees, admin };
 };
