@@ -270,7 +270,7 @@ const admin = [
   {
     id: "A001",
     email: "admin@gmail.com",
-    pass: "123",
+    pass: "admin",
   },
 ];
 
