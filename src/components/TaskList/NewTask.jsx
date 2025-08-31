@@ -1,5 +1,5 @@
 export const NewTask = ({Taskdata}) => {
-  console.log(Taskdata);
+ 
   
   return (
     <div>
