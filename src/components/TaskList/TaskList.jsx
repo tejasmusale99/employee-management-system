@@ -11,7 +11,7 @@ export const TaskList = ({ data }) => {
         {data.tasks.map((ele, idx) => {
           // console.log(ele.newTask);
           if (ele.newTask) {
-            return <NewTask key={idx} />;
+            return <NewTask key={idx} Taskdata={ele} />;
           }
           if (ele.active) {
             return <AcceptTask key={idx}/>;
