@@ -8,19 +8,19 @@ export const TaskList = ({ data }) => {
   return (
     <div className="overflow-x-auto p-4 no-scrollbar">
       <div className="flex h-auto gap-5 items-start flex-wrap sm:flex-nowrap">
-        {data.tasks.map((ele) => {
-          console.log(ele.newTask);
+        {data.tasks.map((ele, idx) => {
+          // console.log(ele.newTask);
           if (ele.newTask) {
-            return <NewTask />;
+            return <NewTask key={idx} />;
           }
           if (ele.active) {
-            return <AcceptTask />;
+            return <AcceptTask key={idx}/>;
           }
          if (ele.completed) {
-            return <CompletedTask />;
+            return <CompletedTask key={idx}/>;
           }
            if (ele.failed) {
-            return <FailedTask />;
+            return <FailedTask key={idx}/>;
           }
         })}
       </div>

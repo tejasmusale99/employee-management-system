@@ -39,7 +39,7 @@ function App() {
   // Run only once to set default data in localStorage
   useEffect(() => {
     setLocalStorage();
-    getLocalStorage(); // (not really needed here)
+    getLocalStorage(); 
   }, []);
 
   // Wait till authData is loaded
