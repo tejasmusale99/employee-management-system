@@ -272,9 +272,11 @@ const admin = [
   {
     id: "A001",
     email: "admin@gmail.com",
-    pass: "admin",
+    pass: "123",
   },
 ];
+
+// localStorage.clear()
 
 export const setLocalStorage = () => {
   localStorage.setItem("employees", JSON.stringify(employees));
