@@ -1,9 +1,14 @@
 import React from "react";
 
 export const CreateTask = () => {
+  function submitHandler(e){
+    e.preventDefault()
+    console.log('click Tejas');
+  }
   return (
     <div>
       <form
+        onSubmit={(e)=>{submitHandler(e)}}
         action=""
         className="border border-gray-700 bg-[#2a2a2a] rounded-xl p-6 mt-10 max-w-6xl mx-auto flex flex-col gap-6"
       >
