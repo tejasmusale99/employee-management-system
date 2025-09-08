@@ -18,9 +18,9 @@ export const AllTask = () => {
           <div className="bg-red-400 py-2 px-4 flex mb-2 justify-between rounded">
             <h3>{emp.firstName}</h3>
             <h3>{emp.taskCount.newTask}</h3>
-            <h3>{emp.taskCount.newTask}</h3>
-            <h3>{emp.taskCount.newTask}</h3>
-            <h3>{emp.taskCount.newTask}</h3>
+            <h3>{emp.taskCount.active}</h3>
+            <h3>{emp.taskCount.completed}</h3>
+            <h3>{emp.taskCount.failed}</h3>
           </div>
         );
       })}
