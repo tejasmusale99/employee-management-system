@@ -4,15 +4,17 @@ export const CreateTask = () => {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [taskAssignTo, setTaskAssignTo] = useState("");
+    const [taskCategory, setTaskCategory] = useState("")
   const [taskDescription, setTaskDescription] = useState("");
-  const [taskCategory, setTaskCategory] = useState("")
+
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log("Task created", taskTitle,taskDate,taskAssignTo);
+    console.log("Task created", taskTitle,taskDate,taskAssignTo,taskCategory);
     setTaskTitle('')
     setTaskDate('')
     setTaskAssignTo('')
+    setTaskCategory('')
   }
 
   return (
@@ -81,6 +83,10 @@ export const CreateTask = () => {
               Category
             </label>
             <input
+            onChange={(e)=>{
+              setTaskCategory(e.target.value)
+            }}
+            value={taskCategory}
               id="category"
               name="category"
               type="text"
@@ -95,6 +101,10 @@ export const CreateTask = () => {
             Description
           </label>
           <textarea
+          onChange={(e)=>{
+            setTaskDescription(e.target.value)
+          }}
+            value={taskDescription}
             id="description"
             name="description"
             rows={4}
