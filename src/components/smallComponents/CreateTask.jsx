@@ -2,15 +2,16 @@ import React, { useState } from "react";
 
 export const CreateTask = () => {
   const [taskTitle, setTaskTitle] = useState("");
-  // const [taskDate, setTaskDate] = useState("");
+  const [taskDate, setTaskDate] = useState("");
   // const [taskAssignTo, setTaskAssignTo] = useState("");
   // const [taskDescription, setTaskDescription] = useState("");
   // const [taskCategory, setTaskCategory] = useState("")
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log("Task created", taskTitle);
+    console.log("Task created", taskTitle,taskDate);
     setTaskTitle('')
+    setTaskDate('')
   }
 
   return (
@@ -44,6 +45,10 @@ export const CreateTask = () => {
               Date
             </label>
             <input
+            onChange={(e) => {
+                setTaskDate(e.target.value)
+              }}
+              value={taskDate}
               id="date"
               name="date"
               type="date"
