@@ -3,15 +3,16 @@ import React, { useState } from "react";
 export const CreateTask = () => {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
-  // const [taskAssignTo, setTaskAssignTo] = useState("");
-  // const [taskDescription, setTaskDescription] = useState("");
-  // const [taskCategory, setTaskCategory] = useState("")
+  const [taskAssignTo, setTaskAssignTo] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+  const [taskCategory, setTaskCategory] = useState("")
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log("Task created", taskTitle,taskDate);
+    console.log("Task created", taskTitle,taskDate,taskAssignTo);
     setTaskTitle('')
     setTaskDate('')
+    setTaskAssignTo('')
   }
 
   return (
@@ -63,6 +64,10 @@ export const CreateTask = () => {
               Assign To
             </label>
             <input
+            onChange={(e)=>{
+              setTaskAssignTo(e.target.value)
+            }}
+            value={taskAssignTo}
               id="assignTo"
               name="assignTo"
               type="text"
