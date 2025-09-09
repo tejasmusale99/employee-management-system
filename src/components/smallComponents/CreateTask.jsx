@@ -15,6 +15,7 @@ export const CreateTask = () => {
     setTaskDate('')
     setTaskAssignTo('')
     setTaskCategory('')
+    setTaskCategory('')
   }
 
   return (
