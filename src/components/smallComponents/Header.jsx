@@ -1,7 +1,7 @@
 import {  useEffect, useState } from "react";
 
 const Header = ({data}) => {
- console.log(data)
+//  console.log(data)
 const [userName,setUserName] = useState(null)
 
 useEffect(()=>{
