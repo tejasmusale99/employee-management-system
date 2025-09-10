@@ -4,21 +4,49 @@ export const CreateTask = () => {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [taskAssignTo, setTaskAssignTo] = useState("");
-    const [taskCategory, setTaskCategory] = useState("")
+  const [taskCategory, setTaskCategory] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
 
-function resetForm(){
-    setTaskTitle('')
-    setTaskDate('')
-    setTaskAssignTo('')
-    setTaskCategory('')
-    setTaskDescription('')
-}
+  const [newTask, setnewTask] = useState({});
+
+  function resetForm() {
+    setTaskTitle("");
+    setTaskDate("");
+    setTaskAssignTo("");
+    setTaskCategory("");
+    setTaskDescription("");
+  }
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log("Task created", taskTitle,taskDate,taskAssignTo,taskCategory);
-    resetForm()
+    // console.log("Task created", taskTitle,taskDate,taskAssignTo,taskCategory);
+
+    const taskObj = {
+      taskTitle,
+      taskDate,
+      taskAssignTo,
+      taskCategory,
+      taskDescription,
+      newTask: false,
+      active: false,
+      failed: false,
+      completed: false,
+    };
+
+    setnewTask(taskObj);
+
+    const employeesData = JSON.parse(localStorage.getItem("employees"));
+
+    // console.log(employeesData);
+
+    employeesData.forEach((elem)=>{
+      if(taskAssignTo == elem.firstName){
+        elem.tasks.push(taskObj)
+        console.log(elem)
+      }
+    });
+
+    resetForm();
   }
 
   return (
@@ -36,7 +64,7 @@ function resetForm(){
             </label>
             <input
               onChange={(e) => {
-                setTaskTitle(e.target.value)
+                setTaskTitle(e.target.value);
               }}
               value={taskTitle}
               id="taskTitle"
@@ -52,8 +80,8 @@ function resetForm(){
               Date
             </label>
             <input
-            onChange={(e) => {
-                setTaskDate(e.target.value)
+              onChange={(e) => {
+                setTaskDate(e.target.value);
               }}
               value={taskDate}
               id="date"
@@ -70,10 +98,10 @@ function resetForm(){
               Assign To
             </label>
             <input
-            onChange={(e)=>{
-              setTaskAssignTo(e.target.value)
-            }}
-            value={taskAssignTo}
+              onChange={(e) => {
+                setTaskAssignTo(e.target.value);
+              }}
+              value={taskAssignTo}
               id="assignTo"
               name="assignTo"
               type="text"
@@ -87,10 +115,10 @@ function resetForm(){
               Category
             </label>
             <input
-            onChange={(e)=>{
-              setTaskCategory(e.target.value)
-            }}
-            value={taskCategory}
+              onChange={(e) => {
+                setTaskCategory(e.target.value);
+              }}
+              value={taskCategory}
               id="category"
               name="category"
               type="text"
@@ -105,9 +133,9 @@ function resetForm(){
             Description
           </label>
           <textarea
-          onChange={(e)=>{
-            setTaskDescription(e.target.value)
-          }}
+            onChange={(e) => {
+              setTaskDescription(e.target.value);
+            }}
             value={taskDescription}
             id="description"
             name="description"
