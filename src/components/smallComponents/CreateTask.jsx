@@ -7,15 +7,18 @@ export const CreateTask = () => {
     const [taskCategory, setTaskCategory] = useState("")
   const [taskDescription, setTaskDescription] = useState("");
 
-
-  function submitHandler(e) {
-    e.preventDefault();
-    console.log("Task created", taskTitle,taskDate,taskAssignTo,taskCategory);
+function resetForm(){
     setTaskTitle('')
     setTaskDate('')
     setTaskAssignTo('')
     setTaskCategory('')
     setTaskDescription('')
+}
+
+  function submitHandler(e) {
+    e.preventDefault();
+    console.log("Task created", taskTitle,taskDate,taskAssignTo,taskCategory);
+    resetForm()
   }
 
   return (

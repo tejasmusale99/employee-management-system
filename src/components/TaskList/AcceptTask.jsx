@@ -1,5 +1,5 @@
 export const AcceptTask = ({Taskdata}) => {
- console.log(Taskdata);
+//  console.log(Taskdata);
   return (
     <div>
       <div className="h-full w-full max-w-sm min-h-[310px] bg-red-400 text-white p-4 rounded-xl flex-shrink-0">

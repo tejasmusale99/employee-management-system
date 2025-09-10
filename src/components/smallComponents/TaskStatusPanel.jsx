@@ -1,5 +1,5 @@
 export const TaskStatusPanel = ({data}) => {
-  console.log(data)
+  // console.log(data)
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 sm:p-6 lg:p-10">
       <div className="bg-amber-600 rounded-2xl p-6 sm:p-8 flex flex-col items-start">
