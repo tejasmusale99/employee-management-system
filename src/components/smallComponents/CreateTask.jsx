@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 export const CreateTask = () => {
-  const [taskTitle, setTaskTitle] = useState("");
-  const [taskDate, setTaskDate] = useState("");
+
+const { refreshData } = useContext(AuthContext);
+
+  const [title, setTaskTitle] = useState("");
+  const [date, setTaskDate] = useState("");
   const [taskAssignTo, setTaskAssignTo] = useState("");
-  const [taskCategory, setTaskCategory] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
+  const [category, setTaskCategory] = useState("");
+  const [description, setTaskDescription] = useState("");
 
   const [newTask, setnewTask] = useState({});
 
@@ -22,12 +27,12 @@ export const CreateTask = () => {
     // console.log("Task created", taskTitle,taskDate,taskAssignTo,taskCategory);
 
     const taskObj = {
-      taskTitle,
-      taskDate,
+      title,
+      date,
       taskAssignTo,
-      taskCategory,
-      taskDescription,
-      newTask: false,
+      category,
+      description,
+      newTask: true,
       active: false,
       failed: false,
       completed: false,
@@ -42,10 +47,15 @@ export const CreateTask = () => {
     employeesData.forEach((elem)=>{
       if(taskAssignTo == elem.firstName){
         elem.tasks.push(taskObj)
-        console.log(elem)
+        elem.taskCount.active = elem.taskCount.active + 1
       }
     });
 
+    console.log(employeesData);
+    
+    localStorage.setItem('employees',JSON.stringify(employeesData))
+    
+    refreshData();
     resetForm();
   }
 
@@ -66,7 +76,7 @@ export const CreateTask = () => {
               onChange={(e) => {
                 setTaskTitle(e.target.value);
               }}
-              value={taskTitle}
+              value={title}
               id="taskTitle"
               name="taskTitle"
               type="text"
@@ -83,7 +93,7 @@ export const CreateTask = () => {
               onChange={(e) => {
                 setTaskDate(e.target.value);
               }}
-              value={taskDate}
+              value={date}
               id="date"
               name="date"
               type="date"
@@ -118,7 +128,7 @@ export const CreateTask = () => {
               onChange={(e) => {
                 setTaskCategory(e.target.value);
               }}
-              value={taskCategory}
+              value={category}
               id="category"
               name="category"
               type="text"
@@ -136,7 +146,7 @@ export const CreateTask = () => {
             onChange={(e) => {
               setTaskDescription(e.target.value);
             }}
-            value={taskDescription}
+            value={description}
             id="description"
             name="description"
             rows={4}
