@@ -14,9 +14,10 @@ useEffect(()=>{
 
 
 const handleLogOut = () => {
-    localStorage.setItem('loggedInUser','')
+    // localStorage.setItem('loggedInUser','')
     // window.location.reload()
   //  console.log(props.changeuser)
+  localStorage.removeItem("loggedInUser");
   props.changeuser('')
   }
 

@@ -14,12 +14,12 @@ export const AcceptTask = ({Taskdata}) => {
           {Taskdata.description} 
         </p>
         <div className="mt-4 flex gap-2">
-          <button className="bg-green-600 hover:bg-green-700 text-sm text-white px-4 py-2 rounded">
+          {/* <button className="bg-green-600 hover:bg-green-700 text-sm text-white px-4 py-2 rounded">
             Mark as Completed
-          </button>
-          <button className="bg-yellow-600 hover:bg-yellow-700 text-sm text-white px-4 py-2 rounded">
+          </button> */}
+          {/* <button className="bg-yellow-600 hover:bg-yellow-700 text-sm text-white px-4 py-2 rounded">
             Mark as Failed
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

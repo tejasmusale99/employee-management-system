@@ -15,9 +15,9 @@ export const NewTask = ({Taskdata}) => {
           {Taskdata.description} 
         </p>
         <div className="mt-4 flex gap-2">
-          <button className="bg-amber-100 hover:bg-amber-700 hover:text-white text-sm text-black px-4 py-2 rounded">
+          {/* <button className="bg-amber-100 hover:bg-amber-700 hover:text-white text-sm text-black px-4 py-2 rounded">
             Accept Task
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

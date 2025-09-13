@@ -37,15 +37,29 @@ function App() {
   }
 
   // Run only once to set default data in localStorage
-  useEffect(() => {
-    setLocalStorage();
-    getLocalStorage(); 
-  }, []);
+  // useEffect(() => {
+  //   setLocalStorage();
+  //   getLocalStorage(); 
+  // }, []);
 
-  // Wait till authData is loaded
-  if (!authData) {
-    return <div>Loading...</div>;
+  // // Wait till authData is loaded
+  // if (!authData) {
+  //   return <div>Loading...</div>;
+  // }
+
+
+  useEffect(() => {
+  // Check if employees/admin already exist in localStorage
+  const existingData = localStorage.getItem("employees");
+  const existingAdmin = localStorage.getItem("admin");
+
+  if (!existingData || !existingAdmin) {
+    setLocalStorage(); // only set default data if not present
   }
+  
+  getLocalStorage(); 
+}, []);
+
 
   return (
     <>
