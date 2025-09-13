@@ -3,30 +3,60 @@ import { AuthContext } from "../../context/AuthProvider";
 
 export const AllTask = () => {
   const authData = useContext(AuthContext);
-//   console.log(authData.employees);
+
   return (
-    <div className="bg-[#1c1c1c p-5 rounded mt-2">
-      <div className="bg-red-400 py-2 px-4 flex mb-2 justify-between rounded">
-        <h2 className="text-lg font-medium">Employee Name</h2>
-        <h3 className="text-lg font-medium">New Task</h3>
-        <h5 className="text-lg font-medium">Active Task</h5>
-        <h5 className="text-lg font-medium">Completed Task</h5>
-        <h5 className="text-lg font-medium">Failed Task</h5>
+    <div className="bg-[#1c1c1c] p-5 rounded mt-2">
+      {/* Outer container allows both scrollbars */}
+      <div className="relative max-h-[70vh] overflow-x-auto overflow-y-auto rounded no-scrollbar">
+        <table className="min-w-[700px] w-full border-collapse">
+          {/* Sticky Header */}
+          <thead className="sticky top-0 z-10 bg-red-400">
+            <tr>
+              <th className="py-2 px-4 text-sm md:text-lg font-medium text-left whitespace-nowrap">
+                Employee Name
+              </th>
+              <th className="py-2 px-4 text-sm md:text-lg font-medium text-center whitespace-nowrap">
+                New Task
+              </th>
+              <th className="py-2 px-4 text-sm md:text-lg font-medium text-center whitespace-nowrap">
+                Active Task
+              </th>
+              <th className="py-2 px-4 text-sm md:text-lg font-medium text-center whitespace-nowrap">
+                Completed Task
+              </th>
+              <th className="py-2 px-4 text-sm md:text-lg font-medium text-center whitespace-nowrap">
+                Failed Task
+              </th>
+            </tr>
+          </thead>
+
+          {/* Table Body */}
+          <tbody>
+            {authData.employees.map((emp, idx) => (
+              <tr
+                key={idx}
+                className="border-b border-amber-100 text-center"
+              >
+                <td className="py-2 px-4 text-amber-50 text-sm md:text-lg font-medium text-left truncate">
+                  {emp.firstName}
+                </td>
+                <td className="py-2 px-4 text-amber-400 text-sm md:text-lg font-medium">
+                  {emp.taskCount.newTask}
+                </td>
+                <td className="py-2 px-4 text-amber-50 text-sm md:text-lg font-medium">
+                  {emp.taskCount.active}
+                </td>
+                <td className="py-2 px-4 text-green-500 text-sm md:text-lg font-medium">
+                  {emp.taskCount.completed}
+                </td>
+                <td className="py-2 px-4 text-red-600 text-sm md:text-lg font-medium">
+                  {emp.taskCount.failed}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      <div className="overflow-auto h-[80%] no-scrollbar">
-      {authData.employees.map((emp,idx) => {
-        return (
-          <div key={idx} className="py-2 px-4 flex mb-2 justify-between rounded border-2 border-amber-100">
-            <h3 className="text-amber-50 text-lg font-medium">{emp.firstName}</h3>
-            <h3 className="text-amber-400 text-lg font-medium">{emp.taskCount.newTask}</h3>
-            <h3 className="text-amber-50 text-lg font-medium">{emp.taskCount.active}</h3>
-            <h3 className="text-green-500 text-lg font-medium">{emp.taskCount.completed}</h3>
-            <h3 className="text-red-600 text-lg font-medium">{emp.taskCount.failed}</h3>
-          </div>
-        );
-       
-      })}
-       </div>
     </div>
   );
 };

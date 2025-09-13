@@ -57,12 +57,13 @@ const LogIn = ({handlelogin}) => {
       </button>
     </form>
 
-    <p className="text-center text-sm text-gray-700 mt-5">
-      Don't have an account?{" "}
-      <span className="text-emerald-700 font-semibold cursor-pointer hover:underline">
-        Sign Up
-      </span>
-    </p>
+ <div className="mt-8 p-4 bg-gray-100 rounded-xl text-sm text-gray-700">
+          <p className="font-semibold mb-2">Demo Credentials:</p>
+          <p><span className="font-semibold">Admin:</span> admin@gmail.com / 123</p>
+          <p><span className="font-semibold">Employee:</span> e@e.com / 123</p>
+        </div>
+
+
   </div>
 </div>
 
