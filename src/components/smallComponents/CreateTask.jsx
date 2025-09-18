@@ -1,10 +1,14 @@
 // import React, { useState } from "react";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+
 import { AuthContext } from "../../context/AuthProvider";
 
 export const CreateTask = () => {
 
 const { refreshData } = useContext(AuthContext);
+
+const [employees, setEmployees] = useState([]);
+
 
   const [title, setTaskTitle] = useState("");
   const [date, setTaskDate] = useState("");
@@ -13,6 +17,11 @@ const { refreshData } = useContext(AuthContext);
   const [description, setTaskDescription] = useState("");
 
   const [newTask, setnewTask] = useState({});
+
+    useEffect(() => {
+    const storedEmployees = JSON.parse(localStorage.getItem("employees")) || [];
+    setEmployees(storedEmployees);
+  }, []);
 
   function resetForm() {
     setTaskTitle("");
@@ -42,10 +51,11 @@ const { refreshData } = useContext(AuthContext);
 
     const employeesData = JSON.parse(localStorage.getItem("employees"));
 
-    // console.log(employeesData);
+    console.log(employeesData);
 
     employeesData.forEach((elem)=>{
-      if(taskAssignTo == elem.firstName){
+       const fullName = `${elem.firstName} ${elem.lastName}`;
+      if(taskAssignTo == fullName){
         elem.tasks.push(taskObj)
         elem.taskCount.active = elem.taskCount.active + 1
       }
@@ -102,22 +112,23 @@ const { refreshData } = useContext(AuthContext);
           </div>
         </div>
 
+        {/* Assign To + Category */}
         <div className="flex flex-col md:flex-row gap-5">
+          {/* 🔽 Dropdown for employees */}
           <div className="flex flex-col w-full md:w-1/2">
-            <label htmlFor="assignTo" className="text-white text-sm mb-1">
-              Assign To
-            </label>
-            <input
-              onChange={(e) => {
-                setTaskAssignTo(e.target.value);
-              }}
+            <label className="text-white text-sm mb-1">Assign To</label>
+            <select
               value={taskAssignTo}
-              id="assignTo"
-              name="assignTo"
-              type="text"
-              placeholder="Employee Name"
-              className="px-4 py-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
+              onChange={(e) => setTaskAssignTo(e.target.value)}
+              className="px-4 py-2 rounded bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-emerald-500"
+            >
+              <option value="">Select Employee</option>
+              {employees.map((emp) => (
+                <option key={emp.id} value={`${emp.firstName} ${emp.lastName}`}>
+                  {emp.firstName} {emp.lastName}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="flex flex-col w-full md:w-1/2">
