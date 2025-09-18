@@ -5,15 +5,18 @@ It allows an *Admin* to assign tasks to employees, and employees can log in to v
 
 Demo Credentials
 
-*Admin Login*
+### Admin 
 - Email: admin@gmail.com  
 - Password: 123  
 
-*Employee Login*
-- Email: e@e.com  
-- Password: 123
+### Employees
+- Rahul Deshmukh → e@e.com / 123
+- Sneha Patil → employee2@example.com / 123
+- Amit Kulkarni → employee3@example.com / 123
+- Priya Reddy → employee4@example.com / 123
+- Karan Joshi → employee5@example.com / 123
 
-Features
+### Features
 
 - Admin can log in and assign tasks to employees.  
 - Employees can log in and view their assigned tasks.  
