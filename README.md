@@ -1,9 +1,14 @@
 # Employee Task Management System
 
 A simple Employee Task Management System built with *React, Tailwind CSS, and LocalStorage*.  
-It allows an *Admin* to assign tasks to employees, and employees can log in to view and track their tasks.  
+It allows an *Admin* to assign tasks to employees, and employees can log in to view and track their tasks.
 
-Demo Credentials
+### Live Demo
+
+🔗 [View Live Project](https://employee-management-co.netlify.app/)
+
+
+## Demo Credentials
 
 ### Admin 
 - Email: admin@gmail.com  
