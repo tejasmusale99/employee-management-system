@@ -67,7 +67,8 @@ const LogIn = ({ handlelogin }) => {
           </p>
           <p>
             Employee: <span className="text-emerald-400">e@e.com</span> | Pass:{" "}
-            <span className="text-emerald-400">123</span>
+            <span className="text-emerald-400">123</span>  | 
+            Name: <span className="text-emerald-400"> Rahul Deshmukh</span>
           </p>
         </div>
       </div>
